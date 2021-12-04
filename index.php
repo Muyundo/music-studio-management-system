@@ -95,14 +95,17 @@ include('header.php');
               <div class="info-box-content">
                 <span class="info-box-text">Complete Songs</span>
                 <span class="info-box-number">
- <?php include ('connect.php');
-                 $sql = "select editing from song_status order by editing";
-                 if($result = mysqli_query($conn, $sql)){
-                  $fieldcount = mysqli_num_fields($result);
-                  printf($fieldcount);
+                <?php include ('connect.php');
+                $sql = "select editing from complete_songs order by status_id";
+                if ($result = mysqli_query($conn, $sql)){
+                  //return number of rows in a result set
+                  $rowcount=mysqli_num_rows($result);
+                  printf($rowcount);
+                  //free result set
                   mysqli_free_result($result);
-                 }
-                mysqli_close($conn);?>
+                }
+               mysqli_close($conn);
+               ?>
 
                  </span>
               </div>
@@ -117,7 +120,17 @@ include('header.php');
 
               <div class="info-box-content">
                 <span class="info-box-text">Uploaded Songs</span>
-                <span class="info-box-number">2,000</span>
+                <span class="info-box-number">
+                  <?php include ('connect.php');
+                 $sql = "select upload from uploaded_songs order by status_id";
+                 if ($result = mysqli_query($conn, $sql)){
+                  //return number of rows in a result set
+                  $rowcount=mysqli_num_rows($result);
+                  printf($rowcount);
+                  //free result set
+                  mysqli_free_result($result);
+                 }
+                mysqli_close($conn);?></span>
               </div>
               <!-- /.info-box-content -->
             </div>
@@ -126,10 +139,54 @@ include('header.php');
           <!-- /.col -->
         </div>
         <!-- /.row -->
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-6">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Fixed Header Table</h3>
 
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
 
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0" style="height: 300px;">
+                <table class="table table-head-fixed text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Song Title</th>
+                      <th  class="th">Youtube Link</th>
+                     
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>183</td>
+                      <td>John Doe</td>
+                      </tr>
+                    
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+        </div>
+        <!-- /.row -->
+        <script>
+        $(".class th").click(function(){
+   window.location = "index.php";
+ });
 
-                   
+    </script>               
     </section>
     
     <!-- /.content -->

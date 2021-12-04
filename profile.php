@@ -149,7 +149,7 @@ if (!isLoggedIn()) {
                     <!--select client song tittles and paste in each row-->
                     <?php 
                     include('connect.php');
-$s = mysqli_query($conn, "select  title, category FROM   songs  where client_id = '$client_id'");
+$s = mysqli_query($conn, "select * FROM   songs_PROFILE  where client_id = '$client_id'");
 
                      while ($song = mysqli_fetch_assoc($s)) {
                         if(mysqli_num_rows($s)>0){?>
@@ -163,20 +163,15 @@ $s = mysqli_query($conn, "select  title, category FROM   songs  where client_id 
                     <td>
                      <?php echo $song['category'];?>
                     </td>
-                    <?php
-                   }
-                      }
-                      ?>
-                      
-                        
-                      
-                     <td><?php echo $stt['recording'];?></td>
-                     <td><?php echo $stt['editing'];?></td>
-                     <td><?php echo $stt['upload'];?></td>
-                     <td><?php echo $stt['link'];?>  
+                       
+                     <td><?php echo $song['recording'];?></td>
+                     <td><?php echo $song['editing'];?></td>
+                     <td><?php echo $song['upload'];?></td>
+                     <td><?php echo $song['link'];?>  
                      </td>
                      <?php
-                     
+                        }
+                      }
                    
                      ?>
                      </tr>
