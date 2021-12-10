@@ -159,15 +159,11 @@ header('location: client.php');
 
 
 if (isset($_GET['profile'])) {
- // $_SESSION['profile'] = $client_id;
+
  $client_id = $_GET['profile'];
-// $client_id = $_SESSION['profile']; 
-   
+
 $query = mysqli_query($conn, "select fname, lname, gender, phone  from clients where client_id='$client_id' ");
-      //$prof = mysqli_fetch_assoc($query);
-      /* $profile = mysqli_query($conn, "select clients.fname, clients.lname, clients.gender, clients.phone, payments.cost 
-       payments.diposit, payments.balance FROM payments INNER JOIN clients on clients.client_id = payments.client_id 
-        ");*/
+     
        $prof = mysqli_fetch_assoc($query);
  
        //display payments from payments table

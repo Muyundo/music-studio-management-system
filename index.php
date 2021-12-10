@@ -17,6 +17,8 @@ include('header.php');
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="clientReg.php">Add Client</a></li>
+            <li class="breadcrumb-item"><a href="client.php">Registered Clients</a></li>
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active"><a href="index.php">Refresh</a></li>
             </ol>
@@ -141,39 +143,36 @@ include('header.php');
         <!-- /.row -->
         <!-- /.row -->
         <div class="row">
-          <div class="col-6">
-            <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Fixed Header Table</h3>
-
-                <div class="card-tools">
-                  <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                    <div class="input-group-append">
-                      <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+          <div class="col-3">
+           
               <!-- /.card-header -->
               <div class="card-body table-responsive p-0" style="height: 300px;">
-                <table class="table table-head-fixed text-nowrap">
+             
+                <table class="table table-head-fixed" id = "Uploaded" >
+                <input type="text" id="table_search" onkeyup="myFunction()" class="form-control float-right" placeholder="Search">
                   <thead>
                     <tr>
-                      <th>Song Title</th>
-                      <th  class="th">Youtube Link</th>
-                     
-                    </tr>
+                      <th>Uploaded Songs</th>
+                      
+
+                      </tr>
                   </thead>
                   <tbody>
+
+                  <?php 
+               include('connect.php');
+              $uploaded = mysqli_query($conn, "select * from uploaded ");
+              while ( $up = mysqli_fetch_array($uploaded)){
+              
+              ?>
                     <tr>
-                      <td>183</td>
-                      <td>John Doe</td>
+                      <td><a href="<?php echo $up['link']; ?>"><?php echo $up['title']; ?></a></td>
+                      
                       </tr>
-                    
+                      <?php } ?>
                   </tbody>
                 </table>
+               
               </div>
               <!-- /.card-body -->
             </div>
@@ -182,9 +181,29 @@ include('header.php');
         </div>
         <!-- /.row -->
         <script>
-        $(".class th").click(function(){
-   window.location = "index.php";
- });
+       function myFunction(){
+//initialize variables
+var input, filter, table, tr, td, i, textValue;
+input = document.getElementById("table_search");
+filter = input.value.toUpperCase();
+table = document.getElementById("Uploaded");
+tr = table.getElementByTagName("tr");
+//loop through table rows and hide those that don't match the search query
+for(i = 0; i<tr.length; i++){
+td = tr[i].getElementByTagName("td")[0];
+if(td){
+  textValue = td.textContent || td.innerText;
+  if(textValue.toUpperCase().indexOf(filter)> -1){
+    tr[i].style.display = "";
+  }else{
+    tr[i].style.display = "No matching results";
+  }
+}
+
+}
+
+
+       }
 
     </script>               
     </section>

@@ -42,6 +42,8 @@ if(isset($_POST['updatesongstatus'])){
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="clientReg.php">Add Client</a></li>
+            <li class="breadcrumb-item"><a href="client.php">Registered Clients</a></li>
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active"><a href="index.php">Refresh</a></li>
             </ol>
@@ -120,7 +122,7 @@ if(isset($_POST['updatesongstatus'])){
                           
                 <?php if($row['editing']=="active"){?>
                 <input type="radio" name="editing" value="pending" >Pending
-                <input type="radio" name="editing" value="recording" checked = "true">Active
+                <input type="radio" name="editing" value="active" checked = "true">Active
                 <input type="radio" name="editing" value="complete">Complete
 
                 <?php } ?>
@@ -128,7 +130,7 @@ if(isset($_POST['updatesongstatus'])){
 
                 <?php if($row['editing']=="complete"){?>
                 <input type="radio" name="editing" value="pending" >Pending
-                <input type="radio" name="editing" value="recording"> Active
+                <input type="radio" name="editing" value="active"> Active
                 <input type="radio" name="editing" value="complete" checked = "true">Complete
 
                 <?php } ?>
@@ -195,8 +197,8 @@ if(isset($_POST['updatesongstatus'])){
               </div>
                
                 <div class="card card-body">
-                 
-              <table class="table table-striped">
+                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for tittle..">
+              <table id = "myTable" class="table table-striped">
                 <table class="table table-bordered">
                   <thead>                  
                     <tr>  
@@ -227,7 +229,7 @@ if(isset($_POST['updatesongstatus'])){
             
              
             <td><?php echo $status['upload']; ?></td>
-            <td><?php echo $status['link']; ?></td>
+            <td><a href="<?php echo $status['link']; ?>"><?php echo $status['link']; ?></a></td>
             <td>
            <a href="process.php?editsongstatus=<?php echo $status['status_id']; ?>" class="edit_btn" ><i class="fas fa-pencil-alt">
            <a href="process.php?del=<?php echo $status['status_id']; ?>" class="del_btn"><i class="fas fa-trash">
@@ -256,6 +258,29 @@ if(isset($_POST['updatesongstatus'])){
 </div>
 <!-- /.row -->
 
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
 
 
 </section>
