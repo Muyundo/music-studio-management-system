@@ -180,7 +180,7 @@ $row = mysqli_query($conn, "select * from nav_tabs  ");
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="user_admin.php" class="nav-link">
+                <a href="financials.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p> <?php echo $tab['nav12'] ;?></p>
                 </a>
