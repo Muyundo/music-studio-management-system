@@ -197,9 +197,8 @@ if(isset($_POST['updatesongstatus'])){
               </div>
                
                 <div class="card card-body">
-                <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for tittle..">
-              <table id = "myTable" class="table table-striped">
-                <table class="table table-bordered">
+               
+                <table  id="example1" class="table table-bordered table-striped" >
                   <thead>                  
                     <tr>  
                       <th>Title</th>
@@ -213,8 +212,8 @@ if(isset($_POST['updatesongstatus'])){
                    <tbody>
                     <?php
                     include('connect.php');
- $prog = mysqli_query($conn, "select song_status.*, songs.title FROM  song_status INNER JOIN songs ON song_status.song_id = songs.song_id
-   ");
+               $prog = mysqli_query($conn, "select song_status.*, songs.title FROM  song_status
+                INNER JOIN songs ON song_status.song_id = songs.song_id ");
                     while($status = mysqli_fetch_array($prog)){
                       // output data of each row
                       

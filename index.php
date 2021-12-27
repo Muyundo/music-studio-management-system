@@ -143,6 +143,41 @@ include('header.php');
         <!-- /.row -->
         <!-- /.row -->
         <div class="row">
+        <div class="col-3">
+           
+           <!-- /.card-header -->
+           <div class="card-body table-responsive p-0" style="height: 300px;">
+          
+             <table class="table table-head-fixed" id = "Uploaded" >
+             <input type="text" id="table_search" onkeyup="myFunction()" class="form-control float-right" placeholder="Search">
+               <thead>
+                 <tr>
+                   <th>Songs in Production</th>
+                   
+
+                   </tr>
+               </thead>
+               <tbody>
+
+               <?php 
+            include('connect.php');
+           $uploaded = mysqli_query($conn, "select * from uploaded ");
+           while ( $up = mysqli_fetch_array($uploaded)){
+           
+           ?>
+                 <tr>
+                   <td><?php echo $up['title']; ?></td>
+                   
+                   </tr>
+                   <?php } ?>
+               </tbody>
+             </table>
+            
+           </div>
+           <!-- /.card-body -->
+         </div>
+         <!-- /.card -->
+
           <div class="col-3">
            
               <!-- /.card-header -->
@@ -177,9 +212,15 @@ include('header.php');
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
+
+
+
+
           </div>
         </div>
         <!-- /.row -->
+
+        
         <script>
        function myFunction(){
 //initialize variables

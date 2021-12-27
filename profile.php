@@ -134,7 +134,7 @@ if (!isLoggedIn()) {
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered">
+                <table  id="example1" class="table table-bordered table-striped" >
                   <thead>                  
                     <tr>
                     
@@ -151,7 +151,7 @@ if (!isLoggedIn()) {
                     <!--select client song tittles and paste in each row-->
                     <?php 
                     include('connect.php');
-$s = mysqli_query($conn, "select * FROM   songs_PROFILE  where client_id = '$client_id'");
+$s = mysqli_query($conn, "select * FROM   songs_profile  where client_id = '$client_id'");
 
                      while ($song = mysqli_fetch_assoc($s)) {
                         if(mysqli_num_rows($s)>0){?>

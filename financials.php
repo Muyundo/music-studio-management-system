@@ -40,7 +40,7 @@ include('header.php');
           $cost = mysqli_fetch_array($sum);
      ?>
               <div class="info-box-content">
-                <span class="info-box-text">Generated Income</span>
+                <span class="info-box-text">Total Income</span>
                 <span class="info-box-number">Ksh.
                 <?php echo $cost['sum(diposit)'];
 
@@ -59,7 +59,7 @@ include('header.php');
               <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-donate"></i></span>
 
               <div class="info-box-content">
-                <span class="info-box-text">Total Depts</span>
+                <span class="info-box-text">Total Arrears</span>
                 <span class="info-box-number">Ksh.
                 <?php 
                 echo $cost['sum(balance)'];
