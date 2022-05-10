@@ -21,7 +21,7 @@ if (!isLoggedIn()) {
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="clientReg.php">Add Client</a></li>
+            <li class="breadcrumb-item"><a href="clientReg.php">Search Client</a></li>
             <li class="breadcrumb-item"><a href="client.php">Registered Clients</a></li>
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active"><a href="payments.php">Refresh</a></li>
@@ -62,6 +62,7 @@ if (!isLoggedIn()) {
                     <div class="col-5">
                     <label for="Production Cost">Production Cost</label>
                     <input type="number" id="cost" name="cost"  value="<?php echo $cost; ?>">
+                    <label for="Production Cost"><small>Enter zero '0' if no amount</small></label>
                   </div>
                   <div class="form-group">
                     <div class="col-5">

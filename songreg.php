@@ -18,7 +18,7 @@ include('header.php');
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="clientReg.php">Add Client</a></li>
-            <li class="breadcrumb-item"><a href="client.php">Registered Clients</a></li>
+            <li class="breadcrumb-item"><a href="client.php">Search Clients</a></li>
               <li class="breadcrumb-item"><a href="index.php">Home</a></li>
               <li class="breadcrumb-item active"><a href="clientReg.php">Refresh</a></li>
             </ol>

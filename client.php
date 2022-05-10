@@ -45,7 +45,7 @@ if (!isLoggedIn()) {
 
             <div class="card card-info">
               <div class="card-header">
-                <h3 class="card-title"><strong>Registered Clients</strong></h3>
+                <h3 class="card-title"><strong>Search Clients</strong></h3>
               </div>
               <!-- /.card-header -->
                <div class="col-md-30">
